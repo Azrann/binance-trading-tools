@@ -4,6 +4,29 @@ Bot de consola para operar en Binance: compra a mercado, coloca una venta limita
 
 Documentación basada en los archivos locales revisados el 21 de octubre de 2026.
 
+<!-- BEGIN project-context -->
+
+## Antigüedad y evidencia
+
+**Año de referencia de esta versión: 2018.** Se toma el archivo de código o configuración más reciente con una fecha histórica recuperable; no se ha podido confirmar la fecha exacta de creación.
+
+- Archivo más reciente datable: **2018-01-09**, [`binanceBot/BinanceBot/Binance.cs`](BinanceBot/Binance.cs); fecha de modificación conservada.
+- Dependencia fechada más reciente entre las comprobadas: [RestSharp 106.2.1](https://www.nuget.org/packages/RestSharp/106.2.1), publicada el **2018-01-06** (versión declarada), en [`binanceBot/BinanceBot/packages.config`](BinanceBot/packages.config).
+- Referencia adicional: destino `netcoreapp1.1` en [`binanceBot/Binance/Binance.csproj`](Binance/Binance.csproj); su [versión estable se publicó el 2016-11-16](https://dotnet.microsoft.com/en-us/platform/support/policy/dotnet-core). Es una pista de generación tecnológica; pudieron existir versiones preliminares anteriores.
+
+La publicación de una dependencia sitúa la configuración conservada a partir de esa versión, si la referencia es válida. Una actualización de paquetes puede ser mucho más reciente que el inicio del proyecto. No se restauraron paquetes para comprobarlo.
+
+## Por qué merece la pena mirarlo
+
+El flujo de una operación es fácil de seguir: compra a mercado, prepara una venta limitada y ofrece controles de consola para gestionarla. Es un ejemplo pequeño para estudiar el ciclo de una orden y su integración HTTP con un exchange.
+
+Puntos de entrada al código:
+
+- [`BinanceBot/Binance.cs`](BinanceBot/Binance.cs)
+- [`BinanceBot/Program.cs`](BinanceBot/Program.cs)
+
+<!-- END project-context -->
+
 ## Estructura y responsabilidades
 
 | Ruta | Responsabilidad |

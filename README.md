@@ -2,6 +2,38 @@
 
 Bots y herramientas históricas para observar y operar en Binance, con integración Telegram.
 
+<!-- BEGIN project-context -->
+
+## Antigüedad y evidencia
+
+**Año de referencia de esta versión: 2021.** Se toma el archivo de código o configuración más reciente con una fecha histórica recuperable; no se ha podido confirmar la fecha exacta de creación.
+
+- Archivo más reciente datable: **2021-02-07**, [`binancebotnew/BinanceBot.Common/TelegramReader.cs`](binancebotnew/BinanceBot.Common/TelegramReader.cs); fecha de modificación conservada.
+- Primer registro entre los repositorios Git originales incluidos: **2021-02-02**. Puede corresponder a una importación; no prueba cuándo se escribió por primera vez.
+- Dependencia fechada más reciente entre las comprobadas: [Binance.Net 6.6.4](https://www.nuget.org/packages/Binance.Net/6.6.4), publicada el **2021-01-22** (versión declarada), en [`binancebotnew/CryptoCoreNew/CryptoCoreNew.csproj`](binancebotnew/CryptoCoreNew/CryptoCoreNew.csproj).
+- Referencia adicional: destino `netcoreapp3.1` en [`binancebotnew/BinanceBot.Common/BinanceBot.Common.csproj`](binancebotnew/BinanceBot.Common/BinanceBot.Common.csproj); su [versión estable se publicó el 2019-12-03](https://dotnet.microsoft.com/en-us/platform/support/policy/dotnet-core). Es una pista de generación tecnológica; pudieron existir versiones preliminares anteriores.
+
+La publicación de una dependencia sitúa la configuración conservada a partir de esa versión, si la referencia es válida. Una actualización de paquetes puede ser mucho más reciente que el inicio del proyecto. No se restauraron paquetes para comprobarlo.
+
+Años de referencia por componente (archivo más reciente datable):
+
+| Componente | Año |
+| --- | --- |
+| [`binanceBot`](binanceBot/) | 2018 |
+| [`binancebotnew`](binancebotnew/) | 2021 |
+
+## Por qué merece la pena mirarlo
+
+Permite comparar un bot pequeño de compra/venta con una organización posterior de adaptadores, monitores y procesadores de mercado. La abstracción IExchange y el procesamiento del libro de órdenes son las partes más útiles para estudiar el diseño.
+
+Puntos de entrada al código:
+
+- [`binanceBot/BinanceBot/Binance.cs`](binanceBot/BinanceBot/Binance.cs)
+- [`binancebotnew/CryptoCoreNew/IExchange.cs`](binancebotnew/CryptoCoreNew/IExchange.cs)
+- [`binancebotnew/BinanceBot.Common/OrderBookProcessor.cs`](binancebotnew/BinanceBot.Common/OrderBookProcessor.cs)
+
+<!-- END project-context -->
+
 ## Contenido
 
 | Directorio | Función |

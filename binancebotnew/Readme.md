@@ -4,6 +4,31 @@ Conjunto de herramientas de consola para negociación y observación del mercado
 
 Documentación basada en los archivos locales revisados el 21 de octubre de 2026.
 
+<!-- BEGIN project-context -->
+
+## Antigüedad y evidencia
+
+**Año de referencia de esta versión: 2021.** Se toma el archivo de código o configuración más reciente con una fecha histórica recuperable; no se ha podido confirmar la fecha exacta de creación.
+
+- Archivo más reciente datable: **2021-02-07**, [`binancebotnew/BinanceBot.Common/TelegramReader.cs`](BinanceBot.Common/TelegramReader.cs); fecha de modificación conservada.
+- Primer registro del repositorio Git original que contiene este código: **2021-02-02**. Puede corresponder a una importación; no prueba cuándo se escribió por primera vez.
+- Dependencia fechada más reciente entre las comprobadas: [Binance.Net 6.6.4](https://www.nuget.org/packages/Binance.Net/6.6.4), publicada el **2021-01-22** (versión declarada), en [`binancebotnew/CryptoCoreNew/CryptoCoreNew.csproj`](CryptoCoreNew/CryptoCoreNew.csproj).
+- Referencia adicional: destino `netcoreapp3.1` en [`binancebotnew/BinanceBot.Common/BinanceBot.Common.csproj`](BinanceBot.Common/BinanceBot.Common.csproj); su [versión estable se publicó el 2019-12-03](https://dotnet.microsoft.com/en-us/platform/support/policy/dotnet-core). Es una pista de generación tecnológica; pudieron existir versiones preliminares anteriores.
+
+La publicación de una dependencia sitúa la configuración conservada a partir de esa versión, si la referencia es válida. Una actualización de paquetes puede ser mucho más reciente que el inicio del proyecto. No se restauraron paquetes para comprobarlo.
+
+## Por qué merece la pena mirarlo
+
+La separación entre IExchange, el adaptador BinanceExchange y los procesadores del libro de órdenes permite estudiar cómo organizar herramientas de trading sin acoplar toda la lógica a un proveedor. Los monitores de volumen y operaciones muestran distintos consumidores de esos datos.
+
+Puntos de entrada al código:
+
+- [`CryptoCoreNew/IExchange.cs`](CryptoCoreNew/IExchange.cs)
+- [`CryptoCoreNew/BinanceExchange.cs`](CryptoCoreNew/BinanceExchange.cs)
+- [`BinanceBot.Common/OrderBookProcessor.cs`](BinanceBot.Common/OrderBookProcessor.cs)
+
+<!-- END project-context -->
+
 ## Estructura y responsabilidades
 
 | Ruta | Responsabilidad |
