@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="OpenTl.BouncyCastle" Version="1.8.3" />
+    <PackageReference Include="OpenTl.ClientApi" Version="0.7.97" />
+    <PackageReference Include="OpenTl.ClientApi.MtProto" Version="0.7.97" />
+    <PackageReference Include="OpenTl.Common" Version="1.1.27" />
+    <PackageReference Include="OpenTl.Netty.Socks" Version="1.0.2" />
+    <PackageReference Include="OpenTl.Schema" Version="1.86.68" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Core.Common\Core.Common.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="session.dat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="sessionIVO2.dat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="sessionIVO1.dat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="sessionBotify.dat">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
