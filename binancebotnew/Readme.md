@@ -1,27 +1,29 @@
+**Languages:** [English](Readme.md) · [Español](README.es.md)
+
 # binancebotnew
 
-Conjunto de herramientas de consola para negociación y observación del mercado de Binance, con integración de clientes Telegram.
+Console tools for trading and monitoring Binance markets, with Telegram client integrations.
 
-Documentación basada en los archivos locales revisados el 21 de octubre de 2026.
+Documentation based on local files reviewed on 21 October 2026.
 
 <!-- BEGIN project-context -->
 
-## Antigüedad y evidencia
+## Historical dates and evidence
 
-**Año de referencia de esta versión: 2021.** Se toma el archivo de código o configuración más reciente con una fecha histórica recuperable; no se ha podido confirmar la fecha exacta de creación.
+**Reference year for this version: 2021.** This uses the most recent source or configuration file with a recoverable historical date; the exact creation date could not be confirmed.
 
-- Archivo más reciente datable: **2021-02-07**, [`binancebotnew/BinanceBot.Common/TelegramReader.cs`](BinanceBot.Common/TelegramReader.cs); fecha de modificación conservada.
-- Primer registro del repositorio Git original que contiene este código: **2021-02-02**. Puede corresponder a una importación; no prueba cuándo se escribió por primera vez.
-- Dependencia fechada más reciente entre las comprobadas: [Binance.Net 6.6.4](https://www.nuget.org/packages/Binance.Net/6.6.4), publicada el **2021-01-22** (versión declarada), en [`binancebotnew/CryptoCoreNew/CryptoCoreNew.csproj`](CryptoCoreNew/CryptoCoreNew.csproj).
-- Referencia adicional: destino `netcoreapp3.1` en [`binancebotnew/BinanceBot.Common/BinanceBot.Common.csproj`](BinanceBot.Common/BinanceBot.Common.csproj); su [versión estable se publicó el 2019-12-03](https://dotnet.microsoft.com/en-us/platform/support/policy/dotnet-core). Es una pista de generación tecnológica; pudieron existir versiones preliminares anteriores.
+- Most recent datable file: **2021-02-07**, [`binancebotnew/BinanceBot.Common/TelegramReader.cs`](BinanceBot.Common/TelegramReader.cs); preserved modification timestamp.
+- First record in the original Git repository containing this code: **2021-02-02**. This may be an import and does not establish when the code was first written.
+- Most recently published dependency among those checked: [Binance.Net 6.6.4](https://www.nuget.org/packages/Binance.Net/6.6.4), published on **2021-01-22** (declared version), in [`binancebotnew/CryptoCoreNew/CryptoCoreNew.csproj`](CryptoCoreNew/CryptoCoreNew.csproj).
+- Additional reference: target `netcoreapp3.1` in [`binancebotnew/BinanceBot.Common/BinanceBot.Common.csproj`](BinanceBot.Common/BinanceBot.Common.csproj); its [stable release was published on 2019-12-03](https://dotnet.microsoft.com/en-us/platform/support/policy/dotnet-core). This indicates the technology generation; earlier preview releases may have existed.
 
-La publicación de una dependencia sitúa la configuración conservada a partir de esa versión, si la referencia es válida. Una actualización de paquetes puede ser mucho más reciente que el inicio del proyecto. No se restauraron paquetes para comprobarlo.
+A dependency's publication places the preserved configuration at or after that version, if the reference is valid. Package updates may be much newer than the project's beginnings. Packages were not restored to verify this.
 
-## Por qué merece la pena mirarlo
+## Why this is worth exploring
 
-La separación entre IExchange, el adaptador BinanceExchange y los procesadores del libro de órdenes permite estudiar cómo organizar herramientas de trading sin acoplar toda la lógica a un proveedor. Los monitores de volumen y operaciones muestran distintos consumidores de esos datos.
+Separating IExchange, the BinanceExchange adapter, and order book processors shows how to organize trading tools without coupling all logic to one provider. Volume and trade monitors demonstrate different consumers of the same market data.
 
-Puntos de entrada al código:
+Code entry points:
 
 - [`CryptoCoreNew/IExchange.cs`](CryptoCoreNew/IExchange.cs)
 - [`CryptoCoreNew/BinanceExchange.cs`](CryptoCoreNew/BinanceExchange.cs)
@@ -29,48 +31,48 @@ Puntos de entrada al código:
 
 <!-- END project-context -->
 
-## Estructura y responsabilidades
+## Structure and responsibilities
 
-| Ruta | Responsabilidad |
+| Path | Responsibility |
 | --- | --- |
-| `BinanceBotNew/` | Ejecutable de negociación. |
-| `BinanceDataDownloader/` | Descarga de datos del mercado. |
-| `DataMonitorOnly/, OrderBookMonitor/, PumpTradesAndOrderBookMonitor/, VolumeMonitorNew/` | Ejecutables para observar precios, libro de órdenes, operaciones y volumen. |
-| `CryptoCoreNew/` | Abstracción IExchange y cliente BinanceExchange, órdenes, saldos y comisiones. |
-| `BinanceBot.Common/, Core.Common/` | Procesamiento del mercado, utilidades HTTP, consola y registro. |
-| `Mentor.telegram.client/` | Cliente OpenTL y sesiones persistentes de Telegram. |
-| `LogReader/` | Herramienta auxiliar .NET Framework 4.5.2 para leer registros. |
+| `BinanceBotNew/` | Trading executable. |
+| `BinanceDataDownloader/` | Market data download. |
+| `DataMonitorOnly/, OrderBookMonitor/, PumpTradesAndOrderBookMonitor/, VolumeMonitorNew/` | Executables for monitoring prices, order books, trades, and volume. |
+| `CryptoCoreNew/` | IExchange abstraction and BinanceExchange client, orders, balances, and fees. |
+| `BinanceBot.Common/, Core.Common/` | Market processing, HTTP utilities, console tools, and logging. |
+| `Mentor.telegram.client/` | OpenTL client and persistent Telegram sessions. |
+| `LogReader/` | Auxiliary .NET Framework 4.5.2 tool for reading logs. |
 
-## Tecnologías y requisitos
+## Technologies and requirements
 
-.NET Core 3.1 para los ejecutables principales; Windows y .NET Framework 4.5.2 para LogReader. Binance.Net 6.6.4, RestSharp y OpenTL son dependencias relevantes.
+.NET Core 3.1 for the main executables; Windows and .NET Framework 4.5.2 for LogReader. Relevant dependencies include Binance.Net 6.6.4, RestSharp, and OpenTL.
 
-Destinos leídos de los proyectos: `netcoreapp3.1`, `v4.5.2`.
+Targets read from project files: `netcoreapp3.1`, `v4.5.2`.
 
-## Preparación y arranque
+## Setup and startup
 
-Elegir un ejecutable según su función. Revisar su Program.cs antes de usar dotnet run: algunos operan sobre cuentas reales y otros solo monitorizan.
+Choose an executable for the task you need. Review its Program.cs before using dotnet run: some operate on real accounts while others only monitor them.
 
-Comandos de preparación, desde esta carpeta, después de revisar la configuración privada:
+Setup commands, run from this folder after reviewing private configuration:
 
 ```text
 dotnet restore BinanceBot.sln
 dotnet build BinanceBotNew/BinanceBotNew.csproj
 ```
 
-Soluciones presentes: `BinanceBot.sln`.
+Solutions present: `BinanceBot.sln`.
 
-## Configuración e integraciones
+## Configuration and integrations
 
-Varios Program.cs contienen claves de Binance. Mentor.telegram.client/ClientFactory.cs configura el acceso a Telegram y los archivos session*.dat conservan sesiones autenticadas. Sustituir estas credenciales y usar sesiones propias.
+Several Program.cs files contain Binance keys. Mentor.telegram.client/ClientFactory.cs configures Telegram access, and session*.dat files preserve authenticated sessions. Replace these credentials and use your own sessions.
 
-## Estado de esta copia
+## Status of this copy
 
-Los perfiles de publicación y las sesiones son configuración local. La revisión no inició conexiones a Binance ni Telegram.
+Publish profiles and sessions are local configuration. The review did not initiate connections to Binance or Telegram.
 
-La revisión fue estática: no se restauraron dependencias, no se compiló ni se ejecutaron aplicaciones o pruebas. Los comandos anteriores son instrucciones de preparación, no resultados de validación. Las versiones indicadas son las del código conservado.
+The review was static: dependencies were not restored, and applications and tests were neither built nor run. The commands above are setup instructions, not validation results. Listed versions describe the preserved code.
 
 
-## Copia pública
+## Public copy
 
-Las credenciales originales se han retirado o sustituido por `REPLACE_WITH_YOUR_VALUE`. Los datos locales, sesiones, certificados privados y perfiles de despliegue se omiten. Configurar servicios y credenciales propios antes de ejecutar. La compilación y el funcionamiento con servicios externos no se han validado.
+Original credentials have been removed or replaced with `REPLACE_WITH_YOUR_VALUE`. Local data, sessions, private certificates, and deployment profiles are omitted. Configure your own services and credentials before running. Building and operation with external services have not been validated.
